@@ -9,7 +9,7 @@ function fib(n) {
 }
 
 /**
- * 数组优化版本
+ * 数组优化版本 空间换时间
  */
 
 function fib1(n) {

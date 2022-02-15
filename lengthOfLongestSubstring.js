@@ -14,6 +14,7 @@ function lengthOfLongestSubstring(s) {
   for (j = 0; j < n; j++) {
     if (map.has(s[j])) {
       i = Math.max(i, map.get(s[j]));
+      // i = j;
     }
     res = Math.max(res, j - i);
     map.set(s[j], j); // 值-索引
@@ -21,4 +22,4 @@ function lengthOfLongestSubstring(s) {
   return res;
 }
 
-console.log(lengthOfLongestSubstring("abcdaafffba"));
+console.log(lengthOfLongestSubstring("abcdaafffbaadjljiieojdhska"));
