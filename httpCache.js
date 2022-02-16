@@ -16,5 +16,11 @@
  */
 
 /**
- * 协商缓存由两组字段控制：last-modified/if-modified-since  和 etag/if-none-match
+ * 协商缓存由两组字段控制：last-modified（服务器资源最后的一次修改时间）/if-modified-since  和 etag（服务器资源的唯一标识）/if-none-match 后组优先级更高
+ * 
+ * 1.服务器通过 Last-Modified 字段告知客户端，资源最后一次被修改的时间，例如 Last-Modified: Mon, 10 Nov 2018 09:10:11 GMT
+ * 2.浏览器将这个值和内容一起记录在缓存数据库中。
+ * 3.下一次请求相同资源时，浏览器从自己的缓存中找出“不确定是否过期的”缓存。因此在请求头中将上次的 Last-Modified 的值写入到请求头的 If-Modified-Since 字段
+ * 4.服务器会将 If-Modified-Since 的值与 Last-Modified 字段进行对比。如果相等，则表示未修改，响应 304；反之，则表示修改了，响应 200 状态码，并返回数据。
+ * 
  */
