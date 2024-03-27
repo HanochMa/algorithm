@@ -80,10 +80,23 @@ function throttle1(fn, wait) {
 function test() {
   console.log(123);
 }
-let a = throttle1(test, 2000);
-a();
-setTimeout(() => {
-  a();
-}, 3000);
-a();
-a();
+// let a = throttle1(test, 2000);
+// a();
+// setTimeout(() => {
+//   a();
+// }, 3000);
+// a();
+// a();
+
+function throttle2(fn, wait){
+  
+  let previous = 0
+  return function (...args){
+    let now = +new Date()
+    if(now - previous > wait){
+      fn.apply(this, args)
+      previous = now
+    }
+  }
+}
+
